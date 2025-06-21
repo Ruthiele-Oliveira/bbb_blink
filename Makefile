@@ -45,8 +45,11 @@ $(TARGET): $(OBJS) $(LIB_OBJS)
 
 # Regra para limpar o projeto
 clean:
-	@echo "Limpando..."
-	rm -f $(TARGET) src/*.o libs/*_*/src/*.o
+	@echo "Limpando o projeto..."
+	# Apaga o executável final e TODOS os arquivos objeto que foram criados,
+	# usando as variáveis que já contêm a lista exata de arquivos.
+	rm -f $(TARGET) $(OBJS) $(LIB_OBJS)
+	@echo "Arquivos gerados foram removidos."
 
 # Regra para executar (útil na BeagleBone)
 run: all
